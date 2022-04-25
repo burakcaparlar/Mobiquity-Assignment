@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="categoryModel"
+            type="com.example.mobiquityassignment.data.domain.CategoryModel" />
+
+        <variable
+            name="productListClickListener"
+            type="com.example.mobiquityassignment.ui.categories.adapter.CategoriesRecyclerViewAdapter.ProductListClickListener" />
+
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:paddingStart="@dimen/small_padding"
+            android:paddingTop="@dimen/medium_padding"
+            android:paddingEnd="@dimen/zero_padding"
+            style="@style/TextAppearance.Material3.TitleLarge"
+            android:setValue="@{categoryModel.name}"
+            tools:text="@string/name" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/productsRecylerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:setProducts="@{categoryModel.productModels}"
+            android:onProductsAdapterClick="@{productListClickListener}"
+            android:paddingVertical="@dimen/medium_padding"
+            android:scrollbars="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/category_item" />
+
+        <!--            android:setProducts="@{categoryModel.productModels}"-->
+    </LinearLayout>
+</layout>

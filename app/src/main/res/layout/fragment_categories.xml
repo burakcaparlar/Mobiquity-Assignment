@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="layoutViewState"
+            type="com.example.mobiquityassignment.core.ui.LayoutViewState" />
+
+        <variable
+            name="viewState"
+            type="com.example.mobiquityassignment.ui.categories.CategoriesViewState" />
+
+        <variable
+            name="productListClickListener"
+            type="com.example.mobiquityassignment.ui.categories.adapter.CategoriesRecyclerViewAdapter.ProductListClickListener" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.HomeFragment">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/colorSurface"
+            android:isRefreshing="@{layoutViewState.loading}"
+            android:isVisible="@{layoutViewState.success}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categoriesRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:onProductsAdapterClick="@{productListClickListener}"
+                android:paddingVertical="@dimen/medium_padding"
+                android:scrollbars="vertical"
+                android:setCategories="@{viewState.categories}"
+                tools:listitem="@layout/category_item" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <ViewStub
+            android:id="@+id/layoutError"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout="@layout/layout_error"
+            app:layoutViewState="@{layoutViewState}" />
+
+        <include
+            android:id="@+id/layoutLoading"
+            layout="@layout/layout_loading"
+            app:layoutViewState="@{layoutViewState}"
+            tools:visibility="gone" />
+
+    </FrameLayout>
+</layout>

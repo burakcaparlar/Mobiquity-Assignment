@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="layoutViewState"
+            type="com.example.mobiquityassignment.core.ui.LayoutViewState" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorSurface"
+        android:gravity="center"
+        android:isVisible="@{layoutViewState.error}"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRes="@{layoutViewState.errorImage}"
+            tools:srcCompat="@drawable/ic_error" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_padding"
+            android:layout_marginTop="@dimen/medium_padding"
+            android:layout_marginEnd="@dimen/medium_padding"
+            android:gravity="center"
+            android:text="@{layoutViewState.getErrorMessage(context)}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            tools:text="@string/no_internet_connection" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonErrorAction"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="@dimen/width_button_error_action"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_padding"
+            android:text="@string/try_again" />
+
+    </LinearLayout>
+</layout>
