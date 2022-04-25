@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="medium_padding">16dp</dimen>
+    <dimen name="small_padding">8dp</dimen>
+    <dimen name="zero_padding">0dp</dimen>
+
+    <dimen name="product_detail_image_size">200dp</dimen>
+
+    <dimen name="width_button_error_action">250dp</dimen>
+    <dimen name="width_layout_error_animation">250dp</dimen>
+    <dimen name="height_layout_error_animation">250dp</dimen>
+    <dimen name="column_size">150dp</dimen>
+
+</resources>
